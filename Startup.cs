@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TodoListWebApi.Models;
+using TodoListWebApi.Utilities;
 
 namespace TodoListWebApi
 {
@@ -21,6 +22,7 @@ namespace TodoListWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoListContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+            services.AddScoped<ITodoItemConverter, TodoItemConverter>();
             services.AddControllers();
         }
 
